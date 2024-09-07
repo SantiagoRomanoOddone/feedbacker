@@ -8,6 +8,6 @@ class ControlAgent:
         success_count = sum([1 for row in cursor if row[1] == 1])
         return f"Total successful actions: {success_count}"
 
-# Example Usage
-control_Agent = ControlAgent(recommendation_agent)
-print(control_Agent.evaluate_success())
+# # Example Usage
+# control_Agent = ControlAgent(recommendation_agent)
+# print(control_Agent.evaluate_success())

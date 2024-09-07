@@ -12,7 +12,7 @@ class TopicAnalysisAgent:
         topic = self.lda_model.components_.argmax()
         return self.vectorizer.get_feature_names_out()[topic]
 
-# Example Usage
-topic_agent = TopicAnalysisAgent()
-topic = topic_agent.extract_topic(feedback)
-print(f"Topic: {topic}")
+# # Example Usage
+# topic_agent = TopicAnalysisAgent()
+# topic = topic_agent.extract_topic(feedback)
+# print(f"Topic: {topic}")

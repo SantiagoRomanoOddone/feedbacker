@@ -9,8 +9,8 @@ class CurrentStateAgent:
                 return doc
         return "No matching process found."
 
-# Example Usage
-process_docs = ["El proceso de compra está conformado por los pasos A, B y C."]
-state_agent = CurrentStateAgent(process_docs)
-current_state = state_agent.get_current_state(topic)
-print(f"Current State: {current_state}")
+# # Example Usage
+# process_docs = ["El proceso de compra está conformado por los pasos A, B y C."]
+# state_agent = CurrentStateAgent(process_docs)
+# current_state = state_agent.get_current_state(topic)
+# print(f"Current State: {current_state}")

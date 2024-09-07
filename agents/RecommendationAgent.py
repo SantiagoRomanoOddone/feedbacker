@@ -26,8 +26,13 @@ class RecommendationAgent:
         self.conn.execute(query, (recommendation, topic, reward))
         self.conn.commit()
 
-# Example Usage
-recommendation_agent = RecommendationAgent()
-action = recommendation_agent.suggest_action(topic)
-print(f"Suggested Action: {action}")
-recommendation_agent.save_recommendation(action, topic)
+    def get_recommendations(self):
+        query = "SELECT * FROM recommendations"
+        cursor = self.conn.execute(query)
+        return cursor.fetchall()
+
+# # Example Usage
+# recommendation_agent = RecommendationAgent()
+# action = recommendation_agent.suggest_action(topic)
+# print(f"Suggested Action: {action}")
+# recommendation_agent.save_recommendation(action, topic)
