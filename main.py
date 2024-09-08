@@ -38,11 +38,15 @@ topic = topic_agent.extract_topic(feedback)
 print(f"Extracted Topic: {topic}")
 
 # 4. Current State Retrieval
+# TODO: add RAG, and document processes
 current_state = state_agent.get_current_state(topic)
 print(f"Current State: {current_state}")
 
 # 5. Actionable Recommendation
-action = recommendation_agent.suggest_action(topic)
+action = recommendation_agent.suggest_action(topic, 
+                                            feedback,
+                                            sentiment_label, 
+                                            sentiment_score )
 print(f"Suggested Action: {action}")
 recommendation_agent.save_recommendation(action, topic)
 

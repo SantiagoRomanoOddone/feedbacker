@@ -14,9 +14,14 @@ class RecommendationAgent:
                 )"""
         self.conn.execute(query)
 
-    def suggest_action(self, topic):
+    def suggest_action(self, 
+                       topic, 
+                       feedback=None,
+                        sentiment_label=None, 
+                        sentiment_score=None):
+        # TODO: add LLM here
         actions = {
-            "proceso de compra": "Reduce the steps in the purchase process.",
+            "compra": "Reducir los pasos hasta compra.",
         }
         action = actions.get(topic, "No suggestion available.")
         return action
