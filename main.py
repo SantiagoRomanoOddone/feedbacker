@@ -14,13 +14,16 @@ def update_reward_in_table(recommendation_agent, recommendation_id, reward):
     recommendation_agent.conn.execute(query, (reward, recommendation_id))
     recommendation_agent.conn.commit()
 
+# Mocks
+process_docs = ["El proceso de compra está conformado por los pasos A, B y C."]
+
 # Initialize Agents
 data_agent = DataCollectionAgent()
 sentiment_agent = SentimentAnalysisAgent()
 topic_agent = TopicAnalysisAgent()
-state_agent = CurrentStateAgent()
+state_agent = CurrentStateAgent(process_docs)
 recommendation_agent = RecommendationAgent()
-control_manager = ControlAgent()
+control_manager = ControlAgent(recommendation_agent)
 
 # 1. Data Collection
 feedback = data_agent.collect_feedback("Me molesta mucho el proceso de compra, debo pasar por muchos pasos hasta comprar.")
