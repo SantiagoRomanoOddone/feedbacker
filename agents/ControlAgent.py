@@ -1,4 +1,6 @@
-class ControlAgent:
+from crewai import Agent
+
+class ControlAgent(Agent):
     def __init__(self, recommendation_agent):
         self.recommendation_agent = recommendation_agent
 
@@ -8,6 +10,3 @@ class ControlAgent:
         success_count = sum([1 for row in cursor if row[1] == 1])
         return f"Total successful actions: {success_count}"
 
-# # Example Usage
-# control_Agent = ControlAgent(recommendation_agent)
-# print(control_Agent.evaluate_success())

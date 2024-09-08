@@ -1,14 +1,13 @@
 from transformers import pipeline
+from crewai import Agent
 
-class SentimentAnalysisAgent:
-    def __init__(self):
+class SentimentAnalysisAgent(Agent):
+    def __init__(self, role="Sentiment Analyzer"):
+        super().__init__(role=role)
         self.model = pipeline("sentiment-analysis")
+    
+    def analyze_sentiment(self, feedback):
+        result = self.model(feedback)[0]
+        return {"sentiment": result['label'], "score": result['score']}
 
-    def analyze_sentiment(self, text):
-        sentiment = self.model(text)[0]
-        return sentiment['label'], sentiment['score']
 
-# # Example Usage
-# sentiment_agent = SentimentAnalysisAgent()
-# sentiment_label, sentiment_score = sentiment_agent.analyze_sentiment(feedback)
-# print(f"Sentiment: {sentiment_label}, Score: {sentiment_score}")

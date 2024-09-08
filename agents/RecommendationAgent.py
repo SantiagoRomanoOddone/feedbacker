@@ -1,17 +1,19 @@
 import sqlite3
+from crewai import Agent
 
-class RecommendationAgent:
+class RecommendationAgent(Agent):
     def __init__(self, db_name="recommendations.db"):
+        super().__init__(role="Action Recommender")
         self.conn = sqlite3.connect(db_name)
         self.create_table()
-
+    
     def create_table(self):
         query = """CREATE TABLE IF NOT EXISTS recommendations (
-                    id INTEGER PRIMARY KEY,
-                    recommendation TEXT,
-                    topic TEXT,
-                    reward INTEGER
-                )"""
+                        id INTEGER PRIMARY KEY,
+                        recommendation TEXT,
+                        topic TEXT,
+                        reward INTEGER
+                    )"""
         self.conn.execute(query)
 
     def suggest_action(self, 
@@ -36,8 +38,4 @@ class RecommendationAgent:
         cursor = self.conn.execute(query)
         return cursor.fetchall()
 
-# # Example Usage
-# recommendation_agent = RecommendationAgent()
-# action = recommendation_agent.suggest_action(topic)
-# print(f"Suggested Action: {action}")
-# recommendation_agent.save_recommendation(action, topic)
+

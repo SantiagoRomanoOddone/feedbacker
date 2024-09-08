@@ -1,12 +1,10 @@
+from crewai import Agent
 
-class DataCollectionAgent:
-    def __init__(self):
+class DataCollectionAgent(Agent):
+    def __init__(self , role="Data Collection Agent"):
+        super().__init__(role=role)
         self.feedback = []
 
     def collect_feedback(self, feedback):
         self.feedback.append(feedback)
         return feedback
-
-# # Example Usage
-# data_agent = DataCollectionAgent()
-# feedback = data_agent.collect_feedback("Me molesta mucho el proceso de compra, debo pasar por muchos pasos hasta comprar.")
